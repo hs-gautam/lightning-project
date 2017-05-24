@@ -19,15 +19,23 @@
         "composer/composer": "^1.3"
     },
     "require": {
-        "composer/installers": "^1.0",
+        "oomphinc/composer-installers-extender": "^1.1",
         "drupal-composer/drupal-scaffold": "^2.0.0",
         "cweagans/composer-patches": "^1.6.0",
-        "acquia/lightning": "~2.1.0"
+        "acquia/lightning": "dev-dropzone"
     },
     "repositories": [
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/phenaproxima/lightning"
         }
     ],
     "scripts": {
@@ -42,9 +50,17 @@
         "bin-dir": "bin/"
     },
     "extra": {
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "docroot/core": [
                 "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "docroot/modules/contrib/{$name}": [
                 "type:drupal-module"
