@@ -77,7 +77,7 @@ install:
 
   # Enable the dev module which will perform any manual update steps needed
   # during drush updatedb.
-    - drush pm-enable lightning_dev --yes
+  - drush pm-enable lightning_dev --yes
 
   # Create custom sub-profile, install it, and download custom tests.
   - 'if [ $VERSION = "SUBPROFILE" ]; then
